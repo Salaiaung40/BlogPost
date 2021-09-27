@@ -13,6 +13,7 @@ public class AuthorDetailImpl implements UserDetails {
     @Autowired
     private Author author;
 
+
     public AuthorDetailImpl(Author author) {
         this.author = author;
     }
