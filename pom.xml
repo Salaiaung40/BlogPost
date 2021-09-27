@@ -11,7 +11,7 @@
     <groupId>be.intecbrussel</groupId>
     <artifactId>blogcentral</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blogcentral</name>
+    <name>blogpost</name>
     <description>blog website group project</description>
 
     <properties>
@@ -26,10 +26,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
-        <!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

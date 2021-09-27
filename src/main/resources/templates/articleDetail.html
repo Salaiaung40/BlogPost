@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="header :: myheader"></div>
+    <link rel="stylesheet" th:href="@{/aboutUs.css}"/>
+    <title>Atricle Detail Page</title>
+</head>
+
+<body>
+
+<div th:insert="navBar :: menubar"></div>
+
+<main>
+    <div class="container">
+        <h4>Article Detail</h4>
+
+        <form th:modelAttribute="articledt">
+            <table class="table-bordered">
+                <tr>
+                    <td>ID:</td>
+                    <td>[[${articledt.id}]]
+                        <hidden path="id"/>
+                    </td>
+                </tr>
+
+                <!--                <tr>-->
+                <!--                    <td>Title:</td>-->
+                <!--                    <td> [[${articledt.titleText}]]-->
+                <!--                        <hidden path="article_title"/>-->
+                <!--                    </td>-->
+                <!--                </tr>-->
+
+
+            </table>
+        </form>
+
+
+        <!-- End of Container div-->
+    </div>
+</main>
+<div th:insert="footer :: footer"></div>
+</body>
+</html>

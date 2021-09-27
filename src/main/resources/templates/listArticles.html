@@ -26,18 +26,23 @@
                 <th>Title</th>
                 <th>Summary</th>
                 <th>Story</th>
+                <th></th>
             </tr>
 
 
             <tr th:each="article: ${articles}">
 
                 <td th:text="${article.id}"></td>
-                <td th:text="${article.id}"></td>
+                <td th:text="${article.getAuthor().id }"></td>
 <!--              <td th:text="${article.author.fullName}"></td>-->
                 <td th:text="${article.postTime}"></td>
+
                 <td th:text="${article.articleTitle}"></td>
                 <td th:text="${article.articleSummary}"></td>
                 <td th:text="${article.articleText}"></td>
+                <td>
+                    <a class="m-3" th:href="@{'/articleDetail/' + ${article.id}}">Read More</a>
+                       </td>
 
             </tr>
 

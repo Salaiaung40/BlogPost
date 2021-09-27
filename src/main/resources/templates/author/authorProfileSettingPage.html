@@ -4,6 +4,7 @@
 <head>
     <div th:replace="header :: myheader"></div>
     <title>Author Profile Page</title>
+    <link rel="stylesheet" th:href="@{/profileSetting.css}"/>
 
 </head>
 <!--
@@ -18,102 +19,238 @@
 
 <main>
 
-
-<div class="container">
-
-
-    <h1> <b> have to add the previous visit page b4 login!!!! </b></h1>
+    <div class="container">
 
 
+        <h1><b> have to add the previous visit page b4 login!!!! </b></h1>
 
-    <h1> Your registration is successfully done !!! </h1>
+
+        <h1> Your registration is successfully done !!! </h1>
 
 
-    <p> You are log in as <b>[[${#request.userPrincipal.principal.fullName}]]</b></p>
-    <hr>
-    <p>Go to
-       <b> <span sec:authentication="principal.fullName"> </span> 's</b>
-        <a th:href="@{/templates/author/authorBlogHome.html}">
-            <button type="button" class="btn btn-primary" >Blog home page</button>
-        </a>
-    </p>
-
-    <div class="form-check">
-        <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="remember-me"
-                name="remember-me"
-
-        />
-        <!--                                checked-->
-        <label class="form-check-label" for="remember-me"> Remember me </label>
-    </div>
+        <!--        <p> You are log in as <b>[[${#request.userPrincipal.principal.fullName}]]</b></p>-->
         <hr>
 
-    <span sec:authentication="principal.fullName"> </span>
 
-    <div class="profileContainer">
+        <!--        <span sec:authentication="principal.fullName"> </span>-->
 
-         <form class="mx-1 mx-md-4">
+        <div class="profileContainer">
 
 
-            <div class="vol-8">
-                <lable> Email :</lable>
-                <input th:type="text" th:name="email"  th:value="${authordetail.username}">
-            </div>
-
-            <div class="vol-8">
-                <lable> Full Name :</lable>
-                <input th:type="text" th:name="fullName" th:value="${authordetail.fullName }">
-            </div>
-
-            <div class="vol-8">
-                <lable> First Name :</lable>
-                <input th:name="firstName" th:type="text" th:value="${lgauthor.getFirstName() }">
-            </div>
-
-            <div class="vol-8">
-                <lable> Last Name :</lable>
-                <input th:type="text" th:name="lastName" th:value="${lgauthor.getLastName() }">
-            </div>
-
-            <div class="vol-8">
-                <lable> User Name :</lable>
-                <input th:type="text" th:name="userName" th:value="${lgauthor.getUserName() }">
-            </div>
-
-            <div class="vol-8">
-                <lable> House Number :</lable>
-                <input th:type="text" th:name="userName" th:value="${lgauthor.getHouseNo() }">
-            </div>
-
-<!--
-             <div class="form-check">
-                 <input
-                         class="form-check-input"
-                         type="checkbox"
-                         value=""
-                         id="remember-me"
-                         name="remember-me"
-
-                 />
+            <div class="container">
+                <div class="row gutters">
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="account-settings">
+                                    <div class="user-profile">
+                                        <div class="user-avatar">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                 alt="Maxwell Admin">
+                                        </div>
+                                        <h5 class="user-name">[[${#request.userPrincipal.principal.fullName}]]</h5>
+                                        <h6 class="user-email">[[${#request.userPrincipal.principal.username}]]</h6>
+                                    </div>
+                                    <div class="form-check">
+                                        <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                value=""
+                                                id="remember-me"
+                                                name="remember-me"
                                                 checked
-                 <label class="form-check-label" for="remember-me"> Remember me </label>
-             </div>
-    -->
-        </form>
 
+                                        />
+
+                                        <label class="form-check-label" for="remember-me"> Remember me </label>
+                                    </div>
+                                    <div class="about">
+                                        <p>
+
+                                            <a th:href="@{/author/authorBlogHome}">
+                                                <button type="button" class="btn btn-primary"><b> <span
+                                                        sec:authentication="principal.fullName"> </span>'s</b> Blog home
+                                                    page
+                                                </button>
+                                            </a>
+                                        </p>
+                                        <a th:href="@{/author/createArticle}">
+                                            <button type="button" class="btn btn-success">Create new article</button>
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+
+                                <form class="mx-1 mx-md-4" th:action="@{/author/authorProfileSettingPage}"
+                                      method="post"
+                                      th:object="${author}">
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Personal Details</h6>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                                                <label class="form-label" for="email">Email</label>
+                                                <input class="form-control" type="email"
+                                                       placeholder="Your Email"
+                                                       th:value="${author.username}"
+                                                       th:name="email" id="email">
+
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="userName">User
+                                                    Name</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="User Name"
+                                                       th:value="${author.getAuthor().getUserName()}"
+                                                       th:name="userName"
+                                                       id="userName" required/>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="firstName">First
+                                                    Name</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="First Name"
+                                                       th:value="${author.getAuthor().getFirstName()}"
+                                                       th:name="firstName"
+                                                       id="firstName" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="lastName">Last
+                                                    Name</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="Last Name"
+                                                       th:value="${author.getAuthor().getLastName()}"
+                                                       th:name="lastName"
+                                                       id="lastName" required/>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mt-3 mb-2 text-primary">Contact Details</h6>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="streetName">Street
+                                                    Name</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="street Name"
+                                                       th:value="${author.getAuthor().getStreetName()}"
+                                                       th:name="streetName"
+                                                       id="streetName"
+                                                       required/>
+                                                <!--                                            th:field="*{streetName}"-->
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="houseNo">House
+                                                    Number</label>
+                                                <input class="form-control" type="number"
+                                                       placeholder="house number"
+                                                       th:value="${author.getAuthor().getHouseNo()}"
+                                                       th:name="houseNo"
+                                                       id="houseNo"
+                                                       required/>
+                                                <!--                                            th:field="*{houseNo}"-->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cityName">City
+                                                    Name</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="City Name"
+                                                       th:value="${author.getAuthor().getCityName()}"
+                                                       th:name="cityName"
+                                                       id="cityName"
+                                                       required/>
+                                                <!--                                            th:field="*{cityName}"-->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="zipCode">Zip
+                                                    Code</label>
+                                                <input class="form-control" type="number"
+                                                       placeholder="Zip code"
+                                                       th:value="${author.getAuthor().getZipCode()}"
+                                                       th:name="zipCode"
+                                                       id="zipCode"
+                                                       required/>
+                                                <!--                                            th:field="*{zipCode}"-->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="psw">Type Password To Confirm
+                                                    Change</label>
+                                                <input class="form-control" type="password"
+                                                       placeholder="Enter Password"
+                                                       th:name="psw"
+                                                       id="psw"
+                                                       minlength="8" maxlength="15" required/>
+                                                <!--                                            th:field="*{password}"-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="text-right">
+                                                <button type="button" id="submitt" name="submit"
+                                                        class="btn btn-secondary">
+                                                    Cancel
+                                                </button>
+                                                <button type="button" id="submit" name="submit" class="btn btn-primary">
+                                                    Update
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End of profileContainer -->
+        </div>
+
+        <!-- End of Container -->
     </div>
-
-
-
-    <!--    <div class="menubar" th:replace=" ">Footer</div>-->
-
-
-</div>
-
 </main>
 <div th:insert="footer :: footer"></div>
 </body>
